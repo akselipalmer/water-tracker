@@ -1,20 +1,18 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { View } from "react-native-ui-lib";
+import PlantCard from "./components/PlantCard";
+
+import { plants } from "./data/plants";
+import { FlatList } from "react-native";
+import ItemSeparator from "./components/ItemSeparator";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View flex paddingV-20>
+      <FlatList
+        data={plants}
+        renderItem={({ item }) => <PlantCard item={item} />}
+        ItemSeparatorComponent={() => <ItemSeparator />}
+      />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
